@@ -1,42 +1,13 @@
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 from kivy.config import Config
 
 from kivymd.app import MDApp
-from kivy.uix.widget import Widget
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.floatlayout import FloatLayout
-from kivy.graphics import *
 
 import style
+from ui import *
 Builder.load_string(style.root_kv)
-
-
-class MainScreen(Screen):
-    def __init__(self, **kwargs):
-        super(MainScreen, self).__init__(**kwargs)
-
-        self.add_widget(DrinkPanel())
-
-    def on_pre_enter(self, *args):
-        print('yeet')
-
-
-class SettingsScreen(Screen):
-    pass
-
-
-class DrinkPanel(Widget):
-    def __init__(self, **kwargs):
-        super(DrinkPanel, self).__init__(**kwargs)
-        self.size = HruskaApp.get_size(0.45, 0.8)
-        self.draw()
-
-    def draw(self):
-        with self.canvas:
-            Color(1, 1, 1, 1)
-            Rectangle(pos=self.pos, size=self.size)
 
 
 class HruskaApp(MDApp):

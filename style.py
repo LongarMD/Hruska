@@ -20,9 +20,9 @@ root_kv = """
     
         FloatLayout:
             MDRaisedButton:
-                text: "Go back"
                 pos_hint: {"center_x": .5, "center_y": .5}
                 on_release:
                     app.root.transition = SlideTransition(direction='up')
                     root.manager.current = 'main'
+                text: "Go back"
 """
