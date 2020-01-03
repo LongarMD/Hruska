@@ -5,9 +5,11 @@ from kivy.config import Config
 
 from kivymd.app import MDApp
 
-from ui import style
-from ui import *
+from frontend import style
+from frontend import *
 Builder.load_string(style.root_kv)
+
+# TODO: Add a thumbnail
 
 
 class HruskaApp(MDApp):

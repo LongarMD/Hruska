@@ -10,6 +10,7 @@ root_kv = """
             icon: 'settings'
             text_color: [1, 1, 1, 1]
             size: app.get_size(0.15, 0.15, 'v', 'v')
+            user_font_size: '50dp'
             on_release:
                 app.root.transition = SlideTransition(direction='down')
                 app.root.current = 'settings'
