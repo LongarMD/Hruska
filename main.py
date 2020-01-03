@@ -5,7 +5,7 @@ from kivy.config import Config
 
 from kivymd.app import MDApp
 
-import style
+from ui import style
 from ui import *
 Builder.load_string(style.root_kv)
 

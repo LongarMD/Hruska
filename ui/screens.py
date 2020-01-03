@@ -1,7 +1,7 @@
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.screenmanager import Screen
 
-from .panel_manager import DrinkPanel
+from .panels import DrinkPanel
 
 
 class MainScreen(Screen):

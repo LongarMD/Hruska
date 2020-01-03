@@ -1,2 +1,2 @@
-from .panel_manager import DrinkPanel
+from .panels import DrinkPanel
 from .screens import MainScreen, SettingsScreen

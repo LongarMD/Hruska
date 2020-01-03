@@ -1,5 +1,6 @@
 root_kv = """
 #: import SlideTransition kivy.uix.screenmanager.SlideTransition
+#: import MDRectangleFlatButton kivymd.uix.button.MDRectangleFlatButton
 
 <MainScreen>:
     AnchorLayout:
@@ -12,7 +13,6 @@ root_kv = """
             on_release:
                 app.root.transition = SlideTransition(direction='down')
                 app.root.current = 'settings'
-
     
 <SettingsScreen>:
     BoxLayout:

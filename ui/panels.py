@@ -1,8 +1,11 @@
 from kivy.core.window import Window
 
 from kivy.uix.widget import Widget
+from kivy.uix.floatlayout import FloatLayout
 from kivy.graphics import *
 from kivy.graphics import RoundedRectangle
+
+from kivymd.uix.button import MDRoundFlatButton
 
 from main import HruskaApp
 
@@ -36,6 +39,13 @@ class DrinkPanel(Widget):
             Color(*self.background_c)
             RoundedRectangle(segments=20, radius=radius, pos=self.pos, size=self.size)
 
+        layout = FloatLayout(size=Window.size)
+        button = MDRoundFlatButton(text='Rum & Coke', font_size=45, size_hint=(0.375, 0.1875),
+                                       pos_hint={"center_x": .5, "center_y": .25})
+
+        layout.add_widget(button)
+        self.add_widget(layout)
+
     def get_position(self, size, anchor):
         offset = HruskaApp.get_size(self.offset[0], self.offset[1])
         if anchor == 'left':
@@ -44,3 +54,6 @@ class DrinkPanel(Widget):
             return (Window.size[0] - size[0] + offset[0]) / 2, (Window.size[1] - size[1] + offset[1]) / 2
         elif anchor == 'right':
             return Window.size[0] - size[0] / 2, (Window.size[1] - size[1] + offset[1]) / 2
+
+    def get_button_pos(self, btn_size):
+        return self.pos[0] + self.size[0] / 2 - btn_size[0]/2, self.pos[1] + self.size[1] / 2
