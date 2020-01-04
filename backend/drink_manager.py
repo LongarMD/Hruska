@@ -18,7 +18,7 @@ class Drink:
                              json_str['background_color']['b'],
                              json_str['background_color']['a'])
         self.panel = None
-    
+
     def set_panel(self, panel):
         self.panel = panel
 
