@@ -1,0 +1,16 @@
+{
+  "name": "Martini Negroni",
+  "thumbnail_src": "martini_negroni.png",
+  "primary_color": {
+    "r": 0.589,
+    "g": 0,
+    "b": 0.235,
+    "a": 1
+  },
+  "background_color": {
+    "r": 0.137,
+    "g": 0.137,
+    "b": 0.137,
+    "a": 1
+  }
+}
