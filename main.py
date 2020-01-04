@@ -1,9 +1,13 @@
+import os
+
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
-from kivy.core.window import Window
 from kivy.config import Config
 
 from kivymd.app import MDApp
+
+from utils import get_size
+from backend import DrinkManager
 
 from frontend import style
 from frontend import *
@@ -15,6 +19,7 @@ Builder.load_string(style.root_kv)
 class HruskaApp(MDApp):
     def __init__(self, **kwargs):
         self.title = "Hruška"
+        self.icon = 'assets/logo/hruska.ico'
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "LightGreen"
 
@@ -23,11 +28,17 @@ class HruskaApp(MDApp):
         Config.set('graphics', 'height', '600')
         Config.write()
 
+        recipes_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'assets/recipes')
+        self.drink_manager = DrinkManager(recipes_dir)
+
         super().__init__(**kwargs)
 
     def build(self):
         sm = ScreenManager()
-        main_screen, settings_screen = MainScreen(name='main'), SettingsScreen(name='settings')
+        main_screen, settings_screen = MainScreen(self.drink_manager, name='main'), SettingsScreen(name='settings')
+
+        self.drink_manager.load_drinks()
+        self.drink_manager.display_drinks(main_screen)
 
         sm.add_widget(main_screen)
         sm.add_widget(settings_screen)
@@ -36,11 +47,7 @@ class HruskaApp(MDApp):
 
     @staticmethod
     def get_size(x, y, orientation_x='h', orientation_y='v'):
-        window_size = Window.size
-        new_x = window_size[0] * x if orientation_x == 'h' else window_size[1] * x
-        new_y = window_size[1] * y if orientation_y == 'v' else window_size[0] * y
-
-        return new_x, new_y
+        return get_size(x, y, orientation_x, orientation_y)
 
 
 if __name__ == "__main__":
