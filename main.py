@@ -4,7 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 from kivy.config import Config
 
-from kivymd.app import MDApp
+from KivyMD.kivymd.app import MDApp
 
 from utils import get_size
 from backend import DrinkManager

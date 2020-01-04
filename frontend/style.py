@@ -1,6 +1,6 @@
 root_kv = """
 #: import SlideTransition kivy.uix.screenmanager.SlideTransition
-#: import MDRoundFlatButton kivymd.uix.button.MDRoundFlatButton
+#: import MDRoundFlatButton KivyMD.kivymd.uix.button.MDRoundFlatButton
 
 <MainScreen>:
     AnchorLayout:

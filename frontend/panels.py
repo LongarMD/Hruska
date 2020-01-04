@@ -5,7 +5,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.graphics import *
 from kivy.graphics import RoundedRectangle
 
-from kivymd.uix.button import MDRoundFlatButton
+from KivyMD.kivymd.uix.button import MDRoundFlatButton
 from kivy.uix.image import Image
 
 from utils import get_size
