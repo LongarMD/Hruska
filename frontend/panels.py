@@ -10,8 +10,6 @@ from kivy.uix.image import Image
 
 from utils import get_size
 
-# TODO: Fix MDRoundFlatButton colours
-
 
 class DrinkPanel(Widget):
     def __init__(self, drink, position, border_size=1.01, **kwargs):
@@ -53,7 +51,7 @@ class DrinkPanel(Widget):
         layout = FloatLayout(size=Window.size)
         button = MDRoundFlatButton(text=self.drink_name, font_size=45, size_hint=(0.35, 0.15),
                                    pos_hint=self.get_button_pos(), theme_text_color="Custom",
-                                   text_color=self.primary_c, md_bg_color=(1, 1, 1, 1))
+                                   text_color=self.primary_c, md_bg_color=(1, 1, 1, 1), ripple_color=self.primary_c)
 
         image = Image(source=self.image_src, size_hint=(0.35, .5), pos_hint=self.get_image_pos())
 
