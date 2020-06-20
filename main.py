@@ -35,12 +35,13 @@ class HruskaApp(MDApp):
 
     def build(self):
         sm = ScreenManager()
-        main_screen, settings_screen = MainScreen(self.drink_manager, name='main'), SettingsScreen(name='settings')
+        main_screen, settings_screen = MainScreen(self.drink_manager, self, name='main'), SettingsScreen(name='settings')
         loading_screen = LoadingScreen(name='loading')
 
         self.drink_manager.load_drinks()
         self.drink_manager.display_drinks(main_screen, self)
 
+        main_screen.draw_settings()
         sm.add_widget(main_screen)
         sm.add_widget(settings_screen)
         sm.add_widget(loading_screen)

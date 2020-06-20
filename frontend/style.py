@@ -2,17 +2,7 @@ root_kv = """
 #: import SlideTransition kivy.uix.screenmanager.SlideTransition
 
 <MainScreen>:
-    AnchorLayout:
-        anchor_x: 'right'
-        anchor_y: 'top'
-        MDIconButton:
-            icon: 'settings'
-            text_color: [1, 1, 1, 1]
-            size: app.get_size(0.15, 0.15, 'v', 'v')
-            user_font_size: '50dp'
-            on_release:
-                app.root.transition = SlideTransition(direction='down')
-                app.root.current = 'settings'
+    
     
 <SettingsScreen>:
     BoxLayout:

@@ -54,7 +54,7 @@ class DrinkPanel(Widget):
             self.add_components(('pos', RoundedRectangle(segments=20, radius=radius, pos=self.pos, size=self.size)))
 
         layout = FloatLayout(size=Window.size)
-        button = MDRoundFlatButton(text=self.drink_name, font_size=45, size_hint=(0.35, 0.15),
+        button = MDRoundFlatButton(text=self.drink_name, font_size=20, size_hint=(0.35, 0.15),
                                    pos_hint=self.get_button_pos(), theme_text_color="Custom",
                                    text_color=self.primary_c, md_bg_color=(1, 1, 1, 1), ripple_color=self.primary_c,
                                    on_release=lambda x: self.start_pouring())
@@ -95,4 +95,8 @@ class DrinkPanel(Widget):
         self.app.root.transition = SlideTransition(direction='up', duration=0.75)
         self.app.root.current = 'loading'
 
-        self.app.motor_manager.create_task(5, lambda x: print('Pouring finished'))
+        self.app.motor_manager.create_task([True, True], [5, 2], lambda x: self.return_to_main())
+
+    def return_to_main(self):
+        self.app.root.transition = SlideTransition(direction='down', duration=0.75)
+        self.app.root.current = 'main'
