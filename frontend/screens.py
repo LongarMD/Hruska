@@ -21,3 +21,7 @@ class MainScreen(Screen):
 
 class SettingsScreen(Screen):
     pass
+
+
+class LoadingScreen(Screen):
+    pass

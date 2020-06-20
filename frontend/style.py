@@ -1,6 +1,5 @@
 root_kv = """
 #: import SlideTransition kivy.uix.screenmanager.SlideTransition
-#: import MDRoundFlatButton KivyMD.kivymd.uix.button.MDRoundFlatButton
 
 <MainScreen>:
     AnchorLayout:
@@ -26,4 +25,11 @@ root_kv = """
                     app.root.transition = SlideTransition(direction='up')
                     root.manager.current = 'main'
                 text: "Go back"
+
+<LoadingScreen>:
+    FloatLayout:
+        Image:
+            source: 'assets/animations/loadingAnim.gif'
+            pos_hint: {"center_x": .5, "center_y": .5}
+            anim_delay: 0.05
 """

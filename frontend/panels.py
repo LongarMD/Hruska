@@ -1,18 +1,21 @@
+import asyncio
+
 from kivy.core.window import Window
 
+from kivy.uix.screenmanager import SlideTransition
 from kivy.uix.widget import Widget
 from kivy.uix.floatlayout import FloatLayout
 from kivy.graphics import *
 from kivy.graphics import RoundedRectangle
 
-from KivyMD.kivymd.uix.button import MDRoundFlatButton
+from kivymd.uix.button import MDRoundFlatButton
 from kivy.uix.image import Image
 
 from utils import get_size
 
 
 class DrinkPanel(Widget):
-    def __init__(self, drink, position, border_size=1.01, **kwargs):
+    def __init__(self, drink, position, app, border_size=1.01, **kwargs):
         super(DrinkPanel, self).__init__(**kwargs)
 
         self.drink_name = drink.drink_name
@@ -26,6 +29,8 @@ class DrinkPanel(Widget):
         self.offset = (0, -0.1)
         self.size = get_size(0.45, 0.8)
         self.pos = self.get_position(self.size)
+
+        self.app = app
 
         self._components = []
 
@@ -51,7 +56,8 @@ class DrinkPanel(Widget):
         layout = FloatLayout(size=Window.size)
         button = MDRoundFlatButton(text=self.drink_name, font_size=45, size_hint=(0.35, 0.15),
                                    pos_hint=self.get_button_pos(), theme_text_color="Custom",
-                                   text_color=self.primary_c, md_bg_color=(1, 1, 1, 1), ripple_color=self.primary_c)
+                                   text_color=self.primary_c, md_bg_color=(1, 1, 1, 1), ripple_color=self.primary_c,
+                                   on_release=lambda x: self.start_pouring())
 
         image = Image(source=self.image_src, size_hint=(0.35, .5), pos_hint=self.get_image_pos())
 
@@ -84,3 +90,9 @@ class DrinkPanel(Widget):
                 delta_pos_hint = delta_p[0] / Window.size[0], delta_p[1] / Window.size[1]
                 obj[1].pos_hint = {'center_x': obj[1].pos_hint['center_x'] + delta_pos_hint[0],
                                    'center_y': obj[1].pos_hint['center_y'] + delta_pos_hint[1]}
+
+    def start_pouring(self):
+        self.app.root.transition = SlideTransition(direction='up', duration=0.75)
+        self.app.root.current = 'loading'
+
+        self.app.motor_manager.create_task(5, lambda x: print('Pouring finished'))

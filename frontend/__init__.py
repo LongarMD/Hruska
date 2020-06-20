@@ -1,2 +1,2 @@
 from .panels import DrinkPanel
-from .screens import MainScreen, SettingsScreen
+from .screens import MainScreen, SettingsScreen, LoadingScreen

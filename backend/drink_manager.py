@@ -42,11 +42,11 @@ class DrinkManager:
 
         self.drinks.sort(key=lambda x: x.drink_name)
 
-    def display_drinks(self, main_screen):
+    def display_drinks(self, main_screen, app):
 
         layout = AnchorLayout(anchor_x='center', anchor_y='center')
         for i, drink in enumerate(self.drinks):
-            panel = DrinkPanel(drink, i + 1)
+            panel = DrinkPanel(drink, i + 1, app)
             drink.set_panel(panel)
 
             layout.add_widget(panel)
